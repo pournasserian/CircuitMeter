@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>API Test</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/starter-template.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Circuit Meter</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>API Test Site!</h1>
+            <p class="lead">Building Filters</p>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="buildings" api="buildings/all">Buildings</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="building-sections" api="buildingsections/all">Building Sections</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="building-section-types" api="buildingsectiontypes/all" pivot="True">Building Section Types</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="floors" api="floors/all">Floors</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="common-areas" api="BsidCA/all" pivot="True">Common Areas</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="tenants" api="tenants/all">Tenants</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="essential" api="essential/all" pivot="True">Essential</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="vacant" api="vacant/all" pivot="True">Vacant</a>
+            <p class="lead">Equipment Filters</p>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="equipment" api="equipment/all" pivot="True">Equipment</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="etids" api="etids/all" pivot="True">Equipment types</a>
+            <p class="lead">Infrastructure Filters</p>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="meters" api="meters/all">Meters</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="ebox-types" api="eboxtypes/all" pivot="True">Ebox types</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="eboxes" api="eboxes/all">Eboxes</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="phases" api="phases/all" pivot="True">Phases</a>
+            <p class="lead">Location Filters</p>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="countries" api="Countries/all" pivot="True">Countries</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="provinces" api="Provinces/all" pivot="True">Provinces</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="regions" api="Regions/all" pivot="True">Regions</a>
+            <p class="lead">Pulse Filters</p>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="meter-pulse-counters" api="MeterPulseCounters/all" pivot="True">Meter Pulse Counters</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="meter-pulse-groups" api="MeterPulseGroups/all" pivot="True">Meter Pulse Groups</a>
+            <p class="lead">Time Filters</p>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="hours" api="Hours/all" pivot="True">Hours</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="dow" api="Dow/all" pivot="True">Dow</a>
+            <a href="#" class="btn btn-primary filter-api" role="button" id="month" api="Months/all" pivot="True">Month</a>
+        </div>
+
+        <div class="panel panel-default hidden" id="result">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Result</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div><!-- /.container -->
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
