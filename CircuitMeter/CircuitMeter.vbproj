@@ -111,24 +111,31 @@
     <Content Include="css\main.css" />
     <Content Include="css\starter-template.css" />
     <Content Include="css\ie10-viewport-bug-workaround.css" />
+    <Content Include="filters.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\highchart\exporting.js" />
+    <Content Include="js\highchart\highstock.js" />
     <Content Include="js\ie10-viewport-bug-workaround.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
+    <Content Include="js\live.js" />
     <Content Include="js\main.js" />
     <Content Include="js\npm.js" />
+    <Content Include="livestream.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.vb" />
     <Compile Include="Controllers\BaseController.vb" />
+    <Compile Include="Controllers\LiveStreamController.vb" />
     <Compile Include="Controllers\FilterController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LiveStreamRequestModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -185,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

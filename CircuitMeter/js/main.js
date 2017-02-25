@@ -5,15 +5,19 @@ function responseError(error) {
 
 function showResponseData(data) {
 
+    $("#result").removeClass("hidden");
+    $("#result > table > thead > tr").empty();
+    $("#result > table > tbody").empty();
+
+    $("#json-result").removeClass("hidden");
+    $("#json-content").empty();
+    $("#json-content").html(jsonFormatter(data));
+
     items = jQuery.parseJSON(data).results;
 
     if (!items) {
         items = jQuery.parseJSON(data).result;
     }
-
-    $("#result").removeClass("hidden");
-    $("#result > table > thead > tr").empty();
-    $("#result > table > tbody").empty();
 
     if (items) {
 
@@ -51,15 +55,19 @@ function showResponseData(data) {
 
 function showResponseDataPivot(data) {
 
+    $("#result").removeClass("hidden");
+    $("#result > table > thead > tr").empty();
+    $("#result > table > tbody").empty();
+
+    $("#json-result").removeClass("hidden");
+    $("#json-content").empty();
+    $("#json-content").html(jsonFormatter(data));
+
     items = jQuery.parseJSON(data).results;
 
     if (!items) {
         items = jQuery.parseJSON(data).result;
     }
-
-    $("#result").removeClass("hidden");
-    $("#result > table > thead > tr").empty();
-    $("#result > table > tbody").empty();
 
     if (items) {
 
@@ -99,6 +107,10 @@ function showNoResponse() {
     $("#result > table > thead > tr").empty();
     $("#result > table > tbody").empty();
     $("#result > table > tbody").append("<tr><td><div class='alert alert-danger' role='alert'>There is no data!</div></td></tr>");
+
+    $("#json-result").removeClass("hidden");
+    $("#json-content").html("No data!");
+
 }
 
 $(".filter-api").click(function () {
@@ -129,3 +141,44 @@ $(".filter-api").click(function () {
             responseError(error);
         });
 });
+
+$("#livestream").click(function () {
+
+    var url = "/api/livestream";
+
+    $.get(url)
+        .done(function (data) {
+            console.log(data);
+        })
+        .fail(function (error) {
+            console.log(error);
+        });
+
+});
+
+function jsonFormatter(jsonString) {
+
+    var jsonObj = jQuery.parseJSON(jsonString);
+    var json = JSON.stringify(jsonObj, null, 4);
+
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
+
+
+
+

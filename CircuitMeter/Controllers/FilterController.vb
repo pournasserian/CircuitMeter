@@ -1,7 +1,4 @@
-﻿Imports System.Net
-Imports System.Web.Http
-
-Public Class FilterController
+﻿Public Class FilterController
     Inherits BaseController
 
     Public Function GetValues(endpoint As String) As String
