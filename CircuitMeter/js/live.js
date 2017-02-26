@@ -1,100 +1,108 @@
-﻿$(function () {
+﻿
+var url = "/api/livestream";
 
-    Highcharts.setOptions({
-        global: {
-            useUTC: false
-        }
-    });
+$(function () {
 
     var url = "/api/livestream";
+    var seriesData1 = [];
+    var seriesData2 = [];
+    var seriesData3 = [];
 
-    // Create the chart
-    Highcharts.stockChart('container', {
+    setInterval(function () {
+
+        $.get(url)
+            .done(function (res) {
+                var ddate = new Date(res.time);
+                var dtime = ddate.getTime();
+
+                //console.log(res.time);
+                seriesData1.push([dtime, res.values[0]]);
+                seriesData2.push([dtime, res.values[1]]);
+                seriesData3.push([dtime, res.values[2]]);
+                updateChart();
+            })
+            .fail(function (error) {
+                console.log(error);
+            });
+
+
+    }, 1000);
+
+    function updateChart() {
+        chart.update({
+            series: [{
+                data: seriesData1
+            },
+            {
+                data: seriesData2
+            },
+            {
+                data: seriesData3
+            }]
+        });
+
+    }
+
+    var chart = Highcharts.chart('container', {
         chart: {
-            events: {
-                load: function () {
+            zoomType: 'x'
+        },
+        title: {
+            text: 'Meter Volts'
+        },
 
-                    // set up the updating of the chart each second
-                    var series = this.series[0];
+        subtitle: {
+            text: 'Source: CircuitMeter'
+        },
+        xAxis: {
+            type: 'datetime',
 
-                    setInterval(function () {
-
-                        $.get(url)
-                            .done(function (res) {
-
-                                //var time = (new Date()).getTime();
-                                console.log(new Date().getTime());
-                                //series.addPoint([(new Date()).getTime(), res[0]], true, true);
-                                //for (i = 0; i < res.length; i += 1) {
-                                //    series.addPoint([time + i * 100 + 10, res[i]], true, true);
-                                //}
-                                                              
-                            })
-                            .fail(function (error) {
-                                console.log(error);
-                            });
+            dateTimeLabelFormats: {
+                hour: '%I %p',
+                minute: '%I:%M %p'
+            }
 
 
-                        //var x = (new Date()).getTime(), // current time
-                        //    y = Math.round(Math.random() * 100);
-                        //series.addPoint([x, y], true, true);
-
-                    }, 3000);
-                }
+        },
+        yAxis: {
+            title: {
+                text: 'Volt'
             }
         },
+        //legend: {
+        //    layout: 'vertical',
+        //    align: 'right',
+        //    verticalAlign: 'middle'
+        //},
 
-        rangeSelector: {
-            buttons: [{
-                count: 1,
-                type: 'minute',
-                text: '1M'
-            }, {
-                count: 5,
-                type: 'minute',
-                text: '5M'
-            }, {
-                type: 'all',
-                text: 'All'
-            }],
-            inputEnabled: false,
-            selected: 0
-        },
-
-        title: {
-            text: 'Live random data'
-        },
-
-        exporting: {
-            enabled: false
-        },
+        //plotOptions: {
+        //    series: {
+        //        pointStart: 2010
+        //    }
+        //},
 
         series: [{
-            name: 'Random data',
-            data: (function () {
-                // generate an array of random data
-                var data = [],
-                    time = (new Date()).getTime(),
-                    i;
+            name: 'A',
+            data: seriesData1
+        },
+        {
+            name: 'B',
+            data: seriesData2
+        },
+        {
+            name: 'C',
+            data: seriesData3
+        }],
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        }
 
 
-                $.get(url)
-                    .done(function (res) {
-                        //console.log(time);
-                        //data.push([time , res[0]], true, true);
-                        for (i = 0; i < 1000; i += 1) {
-                            //console.log(time + i * 100);
-                            data.push([time + i * 1000 , i], true, true);
-                        }
-                        
-                    })
-                    .fail(function (error) {
-                        console.log(error);
-                    });
 
-                return data;
-            } ())
-        }]
     });
 
 });
+

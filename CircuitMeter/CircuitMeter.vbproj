@@ -118,6 +118,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\highchart\exporting.js" />
+    <Content Include="js\highchart\highcharts.js" />
     <Content Include="js\highchart\highstock.js" />
     <Content Include="js\ie10-viewport-bug-workaround.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
@@ -136,6 +137,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LiveStreamRequestModel.vb" />
+    <Compile Include="Models\LiveStreamResponseModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -177,6 +179,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\circuitmeter - Web Deploy.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
