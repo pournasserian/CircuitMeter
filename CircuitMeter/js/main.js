@@ -178,7 +178,3 @@ function jsonFormatter(jsonString) {
         return '<span class="' + cls + '">' + match + '</span>';
     });
 }
-
-
-
-

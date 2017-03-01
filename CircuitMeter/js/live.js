@@ -52,7 +52,7 @@ $(function () {
         },
 
         subtitle: {
-            text: 'Source: CircuitMeter'
+            text: 'Source: IRCC Data Analytics Research'
         },
         xAxis: {
             type: 'datetime',
